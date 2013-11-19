@@ -1,5 +1,7 @@
 package it.bajeli.ana_pappa_rana;
 
+// GITHUB INFO http://www.vogella.com/articles/EclipseGit/article.html
+
 import java.util.HashMap;
 import it.bajeli.ana_pappa_rana.R;
 import android.media.AudioManager;
