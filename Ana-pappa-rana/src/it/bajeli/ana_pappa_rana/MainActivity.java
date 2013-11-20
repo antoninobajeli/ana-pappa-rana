@@ -8,6 +8,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
@@ -38,14 +39,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	final static int SOUND_FX_PESCE = 5;
 	final static int SOUND_FX_CAPRA = 6;
 	
-	
+	static Vibrator myVib=null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		
+		myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
 		
 		mSoundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
 		mAudioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
@@ -147,6 +148,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		float streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 		streamVolume = streamVolume / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+		myVib.vibrate(50);
+		
 		switch (v.getId()) {
 			case R.id.button_rana:
 				mSoundPool.stop(mStream1);
