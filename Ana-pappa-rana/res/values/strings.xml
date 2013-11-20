@@ -4,5 +4,11 @@
     <string name="app_name">Ana-pappa-rana</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="ana">Anatra</string>
+    <string name="pappa">Pappagallo</string>
+    <string name="rana">Rana</string>
+    <string name="scimmia">Scimmia</string>
+    <string name="capra">Capra</string>
+    <string name="pesce">Pesce</string>
 
 </resources>
