@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_20131119_191256"
+    tools:context=".MainActivity" >
+
+    <Button
+        android:id="@+id/button_rana"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="406dp"
+        android:layout_marginTop="159dp"
+        android:text="@string/rana"
+        android:textColor="#00000000"
+        android:background="#00000000" />
+
+    <Button
+        android:id="@+id/button_pappa"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/button_rana"
+        android:layout_alignBottom="@+id/button_rana"
+        android:layout_marginLeft="35dp"
+        android:layout_toRightOf="@+id/button_rana"
+        android:text="@string/pappa"
+        android:textColor="#00000000"
+        android:background="#00000000" />
+
+    <Button
+        android:id="@+id/button_scimmia"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/button_pappa"
+        android:layout_alignBottom="@+id/button_pappa"
+        android:layout_marginLeft="29dp"
+        android:layout_toRightOf="@+id/button_pappa"
+        android:text="@string/scimmia"
+        android:textColor="#00000000"
+        android:background="#00000000" />
+
+    <Button
+        android:id="@+id/button_ana"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/button_rana"
+        android:layout_below="@+id/button_rana"
+        android:layout_marginTop="10dp"
+        android:text="@string/ana"
+        android:textColor="#00000000"
+        android:background="#00000000" />
+
+    <Button
+        android:id="@+id/button_capra"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/button_ana"
+        android:layout_alignBottom="@+id/button_ana"
+        android:layout_alignLeft="@+id/button_pappa"
+        android:text="@string/capra"
+        android:textColor="#00000000"
+        android:background="#00000000" />
+
+    <Button
+        android:id="@+id/button_pesce"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/button_capra"
+        android:layout_alignBottom="@+id/button_capra"
+        android:layout_alignLeft="@+id/button_scimmia"
+        android:text="@string/pesce"
+        android:textColor="#00000000"
+        android:background="#00000000" />
+    
+</RelativeLayout>
