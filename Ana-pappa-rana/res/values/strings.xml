@@ -10,5 +10,9 @@
     <string name="scimmia">Scimmia</string>
     <string name="capra">Capra</string>
     <string name="pesce">Pesce</string>
-
+    <string name="doo">Dbo</string>
+    <string name="re">Re</string>
+    <string name="mi">Mi</string>
+    <string name="fa">Fa</string>
+    <string name="sol">Sol</string>            
 </resources>

@@ -12,11 +12,14 @@ import android.os.Vibrator;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
-public class MainActivity extends Activity implements OnClickListener {
+public class MainActivity extends Activity implements OnClickListener, OnTouchListener {
 
 	MediaPlayer mediaAna, mediaRana, mediaPappa;
 	
@@ -39,6 +42,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	final static int SOUND_FX_PESCE = 5;
 	final static int SOUND_FX_CAPRA = 6;
 	
+	final static int SOUND_DO = 7;
+	final static int SOUND_RE = 8;
+	final static int SOUND_MI = 9;
+	final static int SOUND_FA = 9;
+	final static int SOUND_SOL = 10;
+	final static int SOUND_LA = 11;
+	final static int SOUND_SI = 12;
+	
 	static Vibrator myVib=null;
 	
 	@Override
@@ -58,6 +69,14 @@ public class MainActivity extends Activity implements OnClickListener {
 		mSoundPoolMap.put(SOUND_FX_SCIMMIA, mSoundPool.load(this, R.raw.voce00007, 1));
 		mSoundPoolMap.put(SOUND_FX_PESCE, mSoundPool.load(this, R.raw.voce00008, 1));
 		mSoundPoolMap.put(SOUND_FX_CAPRA, mSoundPool.load(this, R.raw.voce00006, 1));
+		
+		mSoundPoolMap.put(SOUND_DO, mSoundPool.load(this, R.raw.voce00009, 1));
+		mSoundPoolMap.put(SOUND_RE, mSoundPool.load(this, R.raw.voce00010, 1));
+		mSoundPoolMap.put(SOUND_MI, mSoundPool.load(this, R.raw.voce00011, 1));
+		mSoundPoolMap.put(SOUND_FA, mSoundPool.load(this, R.raw.voce00012, 1));
+		mSoundPoolMap.put(SOUND_SOL, mSoundPool.load(this, R.raw.voce00013, 1));
+		mSoundPoolMap.put(SOUND_LA, mSoundPool.load(this, R.raw.voce00014, 1));
+		mSoundPoolMap.put(SOUND_SI, mSoundPool.load(this, R.raw.voce00015, 1));
 		
 		//wire buttons
 		/*Button b = (Button)findViewById(R.id.fx01);
@@ -135,6 +154,34 @@ public class MainActivity extends Activity implements OnClickListener {
 		Button ginoButt=(Button) findViewById(R.id.button_capra);
 		ginoButt.setOnClickListener(this);
 		
+		Button doButt=(Button) findViewById(R.id.button_do);
+		doButt.setOnClickListener(this);
+		doButt.setOnTouchListener(this);
+		
+		Button reButt=(Button) findViewById(R.id.button_re);
+		reButt.setOnClickListener(this);
+		reButt.setOnTouchListener(this);
+		
+		Button miButt=(Button) findViewById(R.id.button_mi);
+		miButt.setOnClickListener(this);
+		miButt.setOnTouchListener(this);
+		
+		Button faButt=(Button) findViewById(R.id.button_fa);
+		faButt.setOnClickListener(this);
+		faButt.setOnTouchListener(this);
+		
+		Button solButt=(Button) findViewById(R.id.button_sol);
+		solButt.setOnClickListener(this);
+		solButt.setOnTouchListener(this);
+		
+		Button laButt=(Button) findViewById(R.id.button_la);
+		laButt.setOnClickListener(this);
+		laButt.setOnTouchListener(this);
+		
+		Button siButt=(Button) findViewById(R.id.button_si);
+		siButt.setOnClickListener(this);
+		siButt.setOnTouchListener(this);
+		
 	}
 
 	@Override
@@ -144,8 +191,38 @@ public class MainActivity extends Activity implements OnClickListener {
 		return true;
 	}
 	
+	@Override
+	public boolean onTouch( View v , MotionEvent theMotion ) {
+		Log.d("Touch", "Touch "+theMotion.getAction());
+	    switch ( theMotion.getAction() ) {
+		    case MotionEvent.ACTION_HOVER_ENTER: 
+		    	doPlay(v); 
+		    	break;
+		    case MotionEvent.ACTION_DOWN: 
+		    	doPlay(v); 
+		    	break;
+		    case MotionEvent.ACTION_UP: break;
+	    }
+	    return true;
+	}
 	
 	public void onClick(View v) {
+		doPlay(v);
+	
+	
+	/*
+	@Override
+    public void onItemClick(AdapterView<?> arg0, View view, int position,long id) {                 
+        TextView txtView=(TextView)view.findViewById(R.id.txt_view);
+        String fname=txtView.getText().toString().toLowerCase();
+        int resID=getResources().getIdentifier(fname, "raw", getPackageName());
+        MediaPlayer mediaPlayer=MediaPlayer.create(this,resID);
+        mediaPlayer.start();
+    }*/
+
+	}
+	
+	private void doPlay(View v){
 		float streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 		streamVolume = streamVolume / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		myVib.vibrate(50);
@@ -175,26 +252,46 @@ public class MainActivity extends Activity implements OnClickListener {
 				mSoundPool.stop(mStream1);
 				mStream1= mSoundPool.play(mSoundPoolMap.get(SOUND_FX_CAPRA), streamVolume, streamVolume, 1, LOOP_1_TIME, 1f);
 				break;
+				
+			case R.id.button_do:
+				mSoundPool.stop(mStream1);
+				mStream1= mSoundPool.play(mSoundPoolMap.get(SOUND_DO), streamVolume, streamVolume, 1, LOOP_1_TIME, 1f);
+				break;
+				
+			case R.id.button_re:
+				mSoundPool.stop(mStream1);
+				mStream1= mSoundPool.play(mSoundPoolMap.get(SOUND_RE), streamVolume, streamVolume, 1, LOOP_1_TIME, 1f);
+				break;
+				
+			case R.id.button_mi:
+				mSoundPool.stop(mStream1);
+				mStream1= mSoundPool.play(mSoundPoolMap.get(SOUND_MI), streamVolume, streamVolume, 1, LOOP_1_TIME, 1f);
+				break;
+				
+			case R.id.button_fa:
+				mSoundPool.stop(mStream1);
+				mStream1= mSoundPool.play(mSoundPoolMap.get(SOUND_FA), streamVolume, streamVolume, 1, LOOP_1_TIME, 1f);
+				break;
+				
+			case R.id.button_sol:
+				mSoundPool.stop(mStream1);
+				mStream1= mSoundPool.play(mSoundPoolMap.get(SOUND_SOL), streamVolume, streamVolume, 1, LOOP_1_TIME, 1f);
+				break;
+			case R.id.button_la:
+				mSoundPool.stop(mStream1);
+				mStream1= mSoundPool.play(mSoundPoolMap.get(SOUND_LA), streamVolume, streamVolume, 1, LOOP_1_TIME, 1f);
+				break;
+			case R.id.button_si:
+				mSoundPool.stop(mStream1);
+				mStream1= mSoundPool.play(mSoundPoolMap.get(SOUND_SI), streamVolume, streamVolume, 1, LOOP_1_TIME, 1f);
+				break;
+								
 			case 7:
 				mSoundPool.stop(mStream1);
 				mSoundPool.stop(mStream2);
 				break;
 		}
-	
-	
-	
-	
-	/*
-	@Override
-    public void onItemClick(AdapterView<?> arg0, View view, int position,long id) {                 
-        TextView txtView=(TextView)view.findViewById(R.id.txt_view);
-        String fname=txtView.getText().toString().toLowerCase();
-        int resID=getResources().getIdentifier(fname, "raw", getPackageName());
-        MediaPlayer mediaPlayer=MediaPlayer.create(this,resID);
-        mediaPlayer.start();
-    }*/
-
-}
+	}
 	
 }
 
